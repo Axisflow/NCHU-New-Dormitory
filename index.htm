@@ -31,12 +31,12 @@
                 },
                 "intro2": {
                     "rich": [],
-                    "title": [],
+                    "title": [["兩人房","四人房"],["書桌","床","衣櫃"],["冷氣","洗手臺","廁所","淋浴間","陽台"]],
                     "content": []
                 },
                 "intro3": {
                     "rich": [["3-1-1.jpg","3-1-2.jpg","3-1-3.jpg","3-1-4.jpg"],["3-2-1.jpg","3-2-2.jpg"],["3-3-1.jpg"]],
-                    "title": [["廚房 - 南棟二樓","微波爐","電鍋","電磁爐"],["自由空間(小)","自由空間(大)"],["會議室"]],
+                    "title": [["廚房 - 南棟二樓","微波爐","電鍋","電磁爐"],["自由空間(小)","自由空間(大)"],["會議室"],["茶水間","飲水機","洗衣機","烘衣機","脫水機","洗手檯","洗衣槽"],["客廳","電視"],["閱覽室"],["垃圾場"],["腳踏車停車場","機車停車場"],["宿舍大道"],["公共廁所"],["頂樓"]],
                     "content": [["休閒時自己動手做美食的好地方！", "使用後如有食物濺出記得清理～", "使用後記得歸位喔！","記得整理～"],["小","大"],["暫未開放"]]
                 },
                 "intro4": {
@@ -76,8 +76,12 @@
             function closeCover(){
                 document.getElementById('cover').style.display = "none";
             }
-            function chooseTitle(num) {
-                document.getElementById('intro_rich').innerHTML = "<span style=\"opacity: 1; background-position: center center; background-repeat: no-repeat; background-size: contain; background-image: url('./rich/" + dormIntro[nowIntro]["rich"][nowItem][num] + "'); width: inherit; height: inherit;\"></span>";
+            function chooseTitle(num, isImage = true) {
+                if (isImage) {
+                    document.getElementById('intro_rich').innerHTML = "<span style=\"opacity: 1; background-position: center center; background-repeat: no-repeat; background-size: contain; background-image: url('./rich/" + dormIntro[nowIntro]["rich"][nowItem][num] + "'); width: inherit; height: inherit;\"></span>";
+                } else {
+                    document.getElementById('intro_rich').innerHTML = dormIntro[nowIntro]["rich"][nowItem][num];
+                }
                 document.getElementById('intro_title').innerHTML = dormIntro[nowIntro]["title"][nowItem][num];
                 document.getElementById('intro_content').innerHTML = dormIntro[nowIntro]["content"][nowItem][num];
             }
