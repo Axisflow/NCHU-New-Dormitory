@@ -43,7 +43,7 @@
         <script type="text/javascript">
             var dormIntro = {
                 "intro1": {
-                    "rich": [[]],
+                    "rich": [["1-1-1.jpg","1-1-2.jpg","1-1-3.jpg","","",""],["1-2-1.png"],["1-3-1.jpg","1-3-2.jpg","1-3-3.jpg"]],
                     "title": [["興大二村","白天景色","夜景","東棟","西棟","南棟"],["交通資訊"],["服務中心","警衛室","創意國際學院（？"]],
                     "content": [[]]
                 },
@@ -59,7 +59,7 @@
                 },
                 "intro4": {
                     "rich": [],
-                    "title": [[],[]],
+                    "title": [["重要規定"],["門禁"],["機踏車"],["冰箱"],["寧靜樓層"],["清潔"],["禁用高功率電器","禁止賭博、喝酒、吸菸","禁養動物"]],
                     "content": []
                 }
             };
@@ -231,13 +231,13 @@
                         <span id="intro_rich" style="width: 90%; height: 100%; display: flex;  align-items: center; justify-content: center; "><span style="background-image: url();"></span></span>
                         <span id="next_intro" class="need_pointer" style="color: rgb(255 225 64); " onclick="nextIntro()">></span>
                     </p>
-                    <p style="display: flex; flex-direction:column; align-items: center; justify-content: center; ">
-                        <label id="intro_title"></label>
-                        <span id="intro_content"></span>
+                    <p style="display: flex; flex-direction:column; align-items: center; justify-content: space-evenly; ">
+                        <label id="intro_title" style="font-size:2em;color:rgb(192 32 32);"></label>
+                        <span id="intro_content" style="font-size:1.5em;color:rgb(255 128 0);"></span>
                     </p>
                 </article>
             </section>
-            <span id="close_cover" onclick="closeCover()" style="top:1vh; right:1vh; position:fixed; font-size: 5vh;">X</span>
+            <span id="close_cover" onclick="closeCover()" style="top:2.5vh; right:2.5vh; position:fixed; font-size: 5vh; cursor:pointer;">X</span>
         </div>
     </body>
 </html>
