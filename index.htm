@@ -9,15 +9,22 @@
             bottom{
                 margin: 10px;
             }
-            li:hover{
-                cursor:pointer;
-            }
             .content_but {
                 width: 25vh;
                 height: 25vh;
                 margin: 2vh;
                 border-radius: 15px;
                 background-color: rgb(255 255 255);
+                text-align: center;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+                .content_but:hover {
+                    cursor: pointer;
+                }
+            .need_pointer:hover {
+                cursor: pointer;
             }
             
         </style>
@@ -67,7 +74,7 @@
                         document.getElementById('items_index').innerHTML = "";
                         nowIntro = obj;
                         for (var i = 0; i < Object.keys(dormIntro[obj]["title"]).length; i++) {
-                            document.getElementById('items_index').innerHTML += "<li id=\"dot" + i + "\" onclick=\"chooseItem(" + i + ")\"></li>";
+                            document.getElementById('items_index').innerHTML += "<li id=\"dot" + i + "\" class=\"need_pointer\" style=\"color:rgb(0 225 225);font-size:1.5em\" onclick=\"chooseItem(" + i + ")\"></li>";
                         }
                         nowItem = 0;
                         chooseItem(nowItem);
@@ -87,7 +94,12 @@
                 document.getElementById('intro_content').innerHTML = dormIntro[nowIntro]["content"][nowItem][num];
             }
             function chooseItem(num) {
-                nowItem = (num % Object.keys(dormIntro[nowIntro]["title"]).length + Object.keys(dormIntro[nowIntro]["title"]).length) % Object.keys(dormIntro[nowIntro]["title"]).length;
+                var nowItemlen = Object.keys(dormIntro[nowIntro]["title"]).length;
+                nowItem = (num % nowItemlen + nowItemlen) % nowItemlen;
+                for (var i = 0; i < nowItemlen; i++) {
+                    document.getElementById('dot' + i.toString()).style.color = "rgb(0 225 225)";
+                }
+                document.getElementById('dot' + nowItem.toString()).style.color = "rgb(255 225 64)";
                 if (dormIntro[nowIntro]["title"][nowItem].length <= 1) {
                     document.getElementById('prev_intro').style.display = 'none';
                     document.getElementById('next_intro').style.display = 'none';
@@ -171,7 +183,12 @@
         </header>
 
         <main style="width: 100%; height: contain;">
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-around; "><bottom class="content_but" onclick="openCover('intro1')">宿舍介紹</bottom><bottom class="content_but" onclick="openCover('intro2')">寢室配置</bottom><bottom class="content_but" onclick="openCover('intro3')">公用空間</bottom><bottom class="content_but" onclick="openCover('intro4')">宿舍規定</bottom></div>
+            <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-around; ">
+                <bottom class="content_but" onclick="openCover('intro1')"><span>宿舍介紹</span></bottom>
+                <bottom class="content_but" onclick="openCover('intro2')"><span>寢室配置</span></bottom>
+                <bottom class="content_but" onclick="openCover('intro3')"><span>公用空間</span></bottom>
+                <bottom class="content_but" onclick="openCover('intro4')"><span>宿舍規定</span></bottom>
+            </div>
         </main>
 
         <footer style="width: 100%; background-color: black;">
@@ -182,13 +199,13 @@
             <section></section>
             <section style="display: flex; height: 100%; width: 100%; left: 0; align-items: center; justify-content: space-evenly; ">
                 <ul style="padding: 2%;" id="items_index">
-                    <li onclick="chooseItem()"></li>
+                    <li style="color:rgb(255 226 65)" onclick="chooseItem()"></li>
                 </ul>
                 <article style="width: 90%; height: 95%; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; ">
                     <p style="display: flex; align-items: center; justify-content: space-evenly; width:100%; height: 80%; font-size: 10vh;">
-                        <span id="prev_intro" onclick="prevIntro()"><</span>
+                        <span id="prev_intro" class="need_pointer" style="color: rgb(255 225 64); " onclick="prevIntro()"><</span>
                         <span id="intro_rich" style="width: 90%; height: 100%; display: flex;  align-items: center; justify-content: center; "><span style="background-image: url();"></span></span>
-                        <span id="next_intro" onclick="nextIntro()">></span>
+                        <span id="next_intro" class="need_pointer" style="color: rgb(255 225 64); " onclick="nextIntro()">></span>
                     </p>
                     <p style="display: flex; flex-direction:column; align-items: center; justify-content: center; ">
                         <label id="intro_title"></label>
