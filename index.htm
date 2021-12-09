@@ -22,7 +22,7 @@
                 display:flex;
                 align-items:center;
                 justify-content:center;
-                font-size: 3.6vh;
+                font-size: 4.5vh;
             }
                 .content_but:hover {
                     cursor: pointer;
@@ -30,10 +30,16 @@
             .need_pointer:hover {
                 cursor: pointer;
             }
-            
+            .cover_container {
+                height: 100%;
+                width: 100%;
+                left: 0;
+                align-items: center;
+                justify-content: space-evenly;
+            }
         </style>
     </head>
-    <body style="font-family:Huninn; margin: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-between; background-color: rgb(255 235 124); background-image: url(bg.png); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; ">
+    <body onload="openCover('about')" style="font-family:Huninn; margin: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-between; background-color: rgb(255 235 124); background-image: url(bg.png); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; ">
         <script type="text/javascript">
             var dormIntro = {
                 "intro1": {
@@ -64,9 +70,9 @@
             function openCover(obj) {
                 document.getElementById('cover').style.display = "block";
                 if (obj == "opition") {
-
+                    document.getElementsByClassName('cover_container')[2].style.display = 'flex';
                 } else if (obj == "about") {
-
+                    document.getElementsByClassName('cover_container')[0].style.display = 'flex';
                 } else {
                     var introExist = 0;
                     for(var d in dormIntro) {
@@ -75,6 +81,7 @@
                         }
                     }
                     if (introExist) {
+                        document.getElementsByClassName('cover_container')[1].style.display = 'flex';
                         document.getElementById('items_index').innerHTML = "";
                         nowIntro = obj;
                         for (var i = 0; i < Object.keys(dormIntro[obj]["title"]).length; i++) {
@@ -87,6 +94,9 @@
             }
             function closeCover(){
                 document.getElementById('cover').style.display = "none";
+                for (var i = 0; i < document.getElementsByClassName('cover_container').length; i++) {
+                    document.getElementsByClassName('cover_container')[i].style.display = 'none';
+                }
             }
             function chooseTitle(num, isImage = true) {
                 if (isImage) {
@@ -188,9 +198,9 @@
         <main style="width: 100%; height: 75%; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; ">
             <section style="display: flex; flex-direction: column; align-items: center; justify-content: space-evenly; ">
                 <p style="font-size: 8vh; color: darkblue;"><b>興大二村</b></p>
-                <p style="font-size: 4vh;">鑒於學校沒有完整的新宿舍介紹網站，所以就自己寫了一個啦～</p>
+                <p style="font-size: 3.2vh;">鑒於學校沒有完整的新宿舍介紹網站，所以就自己寫了一個啦～</p>
             </section>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-around; ">
+            <div style="width:100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-around; ">
                 <bottom class="content_but" onclick="openCover('intro1')"><span>宿舍介紹</span></bottom>
                 <bottom class="content_but" onclick="openCover('intro2')"><span>寢室配置</span></bottom>
                 <bottom class="content_but" onclick="openCover('intro3')"><span>公用空間</span></bottom>
@@ -203,8 +213,15 @@
         </footer>
 
         <div id="cover" style="display:none; position: fixed; opacity: 0.9; background-color: rgb(32 32 32); width: 100%; height: 100%; color: rgb(192 192 192);">
-            <section></section>
-            <section style="display: flex; height: 100%; width: 100%; left: 0; align-items: center; justify-content: space-evenly; ">
+            <section class="cover_container" style="display:none;">
+                <article>
+                    <h1>關於</h1>
+                    <h2>All Designed by <a href="https://github.com/axialflow">Axialflow</a> (王證傑)</h2>
+                    <h3>學號 4110064217</h3>
+                    <h4>建議在電腦上瀏覽此網站</h4>
+                </article>
+            </section>
+            <section class="cover_container" style="display:flex;">
                 <ul style="padding: 2%;" id="items_index">
                     <li style="color:rgb(255 226 65)" onclick="chooseItem()"></li>
                 </ul>
