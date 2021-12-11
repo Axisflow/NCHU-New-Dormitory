@@ -170,20 +170,25 @@
                 chooseTitle(nowTitle);
             }
 
+            var scollCount = 0;
             var nowScroll = function (e) {
-                var ee = e || window.event;
-                var delta;
-                if (ee.wheelDelta) { 
-                    delta = ee.wheelDelta;
-                } else if (ee.detail) { //Firefox  
-                    delta = ee.detail;
-                }
+                scollCount++;
+                if (scollCount > 10) {
+                    var ee = e || window.event;
+                    var delta;
+                    if (ee.wheelDelta) {
+                        delta = ee.wheelDelta;
+                    } else if (ee.detail) { //Firefox  
+                        delta = ee.detail;
+                    }
 
-                if (delta < 0) {
-                    chooseItem(nowItem - 1);
-                } else {
-                    chooseItem(nowItem + 1);
+                    if (delta < 0) {
+                        chooseItem(nowItem - 1);
+                    } else {
+                        chooseItem(nowItem + 1);
+                    }
                 }
+                var clearScollCount = setInterval(() => { scollCount = 0; }, 500);
             }
             if (document.addEventListener) { //Firefox 
                 document.addEventListener('DOMMouseScroll', nowScroll, false);
