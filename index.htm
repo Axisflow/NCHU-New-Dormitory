@@ -76,7 +76,7 @@
                 },
                 "intro4": {
                     "rich": [[""],["",""]],
-                    "title": [["重要規定"],["門禁","門禁系統"],["機踏車停放","機車","腳踏車"],["冰箱"],["寧靜樓層"],["清潔"],["禁用高功率電器","禁止賭博、喝酒、吸菸","禁養動物"],["所有規定"]],
+                    "title": [["重要規定"],["門禁","門禁系統"],["機踏車停放","機車","腳踏車"],["冰箱"],["寧靜樓層"],["清潔"],["禁用高功率電器","禁止賭博、喝酒、吸菸","禁養動物"]],
                     "content": [[""]]
                 },
                 "Q&A": {
@@ -269,5 +269,14 @@
             </section>
             <span id="close_cover" onclick="closeCover()" style="top:2.5vh; right:2.5vh; position:fixed; font-size: 5vh; cursor:pointer;">X</span>
         </div>
+        <script type="text/javascript">
+            function randomInt(max) {
+                return Math.round(Math.random() * max);
+            }
+            var colorEle = [250, 200];
+            for (var i = 0; i < document.getElementsByClassName('content_but').length; i++) {
+                document.getElementsByClassName('content_but')[i].style.backgroundColor = "rgb(" + colorEle[randomInt(1)] + " " + colorEle[randomInt(1)] + " " + colorEle[randomInt(1)] + ")";
+            }
+        </script>
     </body>
 </html>
