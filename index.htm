@@ -80,12 +80,12 @@
                     "content": [[""]]
                 },
                 "Q&A": {
-                    "rich": [[""]],
+                    "rich": [["5-1-1.png"]],
                     "title": [["敬請期待"]],
                     "content": [["Coming Soon"]]
                 },
                 "more": {
-                    "rich": [[""],[""]],
+                    "rich": [["<iframe src=\"https://www.osa.nchu.edu.tw/osa/dorm/\" title=\"住宿輔導組\" width=\"100%\" height=\"100%\"></iframe>"], ["<iframe src=\"https://www.nchu.edu.tw/\" title=\"學校官網\" width=\"100%\" height=\"100%\"></iframe>"]],
                     "title": [["住宿輔導組"],["學校官網"]],
                     "content": [["<a href=\"https://www.osa.nchu.edu.tw/osa/dorm/\">https://www.osa.nchu.edu.tw/osa/dorm/</a>"], ["<a href=\"https://www.nchu.edu.tw/\">https://www.nchu.edu.tw/</a>"]]
                 }
@@ -125,8 +125,8 @@
                     document.getElementsByClassName('cover_container')[i].style.display = 'none';
                 }
             }
-            function chooseTitle(num, isImage = true) {
-                if (isImage) {
+            function chooseTitle(num) {
+                if (dormIntro[nowIntro]["rich"][nowItem][num][0] != '<') {
                     document.getElementById('intro_rich').innerHTML = "<span style=\"opacity: 1; background-position: center center; background-repeat: no-repeat; background-size: contain; background-image: url('./rich/" + dormIntro[nowIntro]["rich"][nowItem][num] + "'); width: inherit; height: inherit;\"></span>";
                 } else {
                     document.getElementById('intro_rich').innerHTML = dormIntro[nowIntro]["rich"][nowItem][num];
