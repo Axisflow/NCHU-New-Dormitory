@@ -56,7 +56,57 @@
     </style>
     <meta name="google-site-verification" content="YsqcxAkdKcRVindwFNRSjJRd-0yCjZQEC-84H7CG1Zs" />
 </head>
-<body onload="openCover('about')" style=" display: flex; flex-direction: column; align-items: center; justify-content: space-between; font-family: Huninn; margin: 0; height: 100%; background-color: rgb(255 235 124); background-image: url(bg.png); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; ">
+<body onload="openCover('about');document.getElementById('load').remove()" style=" display: flex; flex-direction: column; align-items: center; justify-content: space-between; font-family: Huninn; margin: 0; height: 100%; background-color: rgb(255 235 124); background-image: url(bg.png); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; ">
+    <style type="text/css">
+        .loading {
+            border-radius: 50%;
+            border-width: 15px;
+            border-style: solid;
+            height: 300px;
+            width: 300px;
+            position: absolute;
+        }
+
+        @keyframes trans {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(1080deg);
+            }
+        }
+
+        @keyframes up-down {
+            0% {
+                top: 0;
+            }
+
+            25% {
+                top: -20px;
+            }
+
+            75% {
+                top: 20px;
+            }
+
+            100% {
+                top: 0;
+            }
+        }
+    </style>
+    <nav id="load" style="position: fixed; width: 100%; height: 100%; background-color: black; display: flex; align-items: center; justify-content: center;">
+        <div style="position: fixed; display: flex; align-items: center; justify-content: center; ">
+            <div class="loading" style="border-color: #0aa858;"></div>
+            <div class="loading" style="animation: trans ease-in-out 7s infinite; border-top-color: #2d85f0; border-left-color: #2d85f0; border-bottom-color: #2d85f0; border-right-color: transparent; "></div>
+            <div style="position:relative; animation: up-down ease-in-out 1.5s infinite;"><img src="loading.svg" height="200" width="200" /></div>
+            <div class="loading" style="animation: trans ease-in-out 5s infinite; border-top-color: #ffbc32; border-left-color: #ffbc32; border-bottom-color: transparent; border-right-color: transparent; "></div>
+            <div class="loading" style="animation: trans ease-in-out 3s infinite; border-top-color: #f4433c; border-left-color: transparent; border-bottom-color: transparent; border-right-color: transparent; "></div>
+            <p style="position:absolute;bottom:-100px;width:200%;text-align:center;color:white;">本檔案約450MB，請耐心等候……</p>
+        </div>
+    </nav>
+    
+
     <script type="text/javascript">
         var dormIntro = {
             "intro1": {
@@ -276,6 +326,8 @@
                     <span id="intro_content" style="font-size:1.5em;color:rgb(255 128 0);"></span>
                 </p>
             </article>
+        </section>
+        <section class="cover_container" style="display:flex;">
         </section>
         <span id="close_cover" onclick="closeCover()" style="top:2.5vh; right:2.5vh; position:fixed; font-size: 5vh; cursor:pointer;">X</span>
     </div>
