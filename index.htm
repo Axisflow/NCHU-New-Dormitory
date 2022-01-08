@@ -60,7 +60,7 @@
     </style>
     <meta name="google-site-verification" content="YsqcxAkdKcRVindwFNRSjJRd-0yCjZQEC-84H7CG1Zs" />
 </head>
-<body onload="openCover('about');document.getElementById('load').remove()" style=" display: flex; flex-direction: column; align-items: center; justify-content: space-between; font-family: Huninn; margin: 0; height: 100%; background-color: rgb(255 235 124); background-image: url(bg.png); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; ">
+<body onload="document.getElementById('load').remove()" style=" display: flex; flex-direction: column; align-items: center; justify-content: space-between; font-family: Huninn; margin: 0; height: 100%; background-color: rgb(255 235 124); background-image: url(bg.png); background-repeat: no-repeat; background-attachment: fixed; background-position: center; background-size: cover; ">
     <style type="text/css">
         .loading {
             border-radius: 50%;
@@ -147,7 +147,9 @@
         var nowIntro;
         var nowItem;
         var nowTitle;
+        var line_cover = [];
         function openCover(obj) {
+            line_cover.push(obj);
             document.getElementById('cover').style.display = "block";
             document.getElementById('cover_bg').style.display = "block";
             if (obj == "opition") {
@@ -178,6 +180,10 @@
             document.getElementById('cover_bg').style.display = "none";
             for (var i = 0; i < document.getElementsByClassName('cover_container').length; i++) {
                 document.getElementsByClassName('cover_container')[i].style.display = 'none';
+            }
+            line_cover.pop();
+            if (line_cover.length != 0) {
+                openCover(line_cover.pop());
             }
         }
         function chooseTitle(num) {
@@ -314,7 +320,7 @@
                 <h4>建議在電腦上瀏覽此網站</h4>
             </article>
         </section>
-        <section class="cover_container" style="display:flex;">
+        <section class="cover_container" style="display:none;">
             <ul style="padding: 2%;" id="items_index">
                 <li style="color:rgb(255 226 65)" onclick="chooseItem()"></li>
             </ul>
@@ -331,6 +337,11 @@
             </article>
         </section>
         <section class="cover_container" style="display:flex;">
+            <div style="position:absolute;right:0;width:20vw; height:100%;background-color:rgb(32 32 32);display:flex;align-items:center;justify-content:center;">
+                <ul style="width:50%;height:80%;font-size:5vh;list-style-type:none;">
+                    <li class="need_pointer" onclick="openCover('about')">關於</li>
+                </ul>
+            </div>
         </section>
         <span id="close_cover" onclick="closeCover()" style="top:2.5vh; right:2.5vh; position:fixed; font-size: 5vh; cursor:pointer;">X</span>
     </div>
